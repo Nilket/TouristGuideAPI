@@ -28,8 +28,10 @@ public class TouristRepository {
         this.attractions = attractions;
     }
 
-    public void addAttractions(TouristAttraction touristAttraction){
+    public List<TouristAttraction> addAttractions(TouristAttraction touristAttraction){
         attractions.add(touristAttraction);
+        return attractions;
+
     }
 
     public void deleteAttraction(TouristAttraction touristAttraction){

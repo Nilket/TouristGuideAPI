@@ -22,8 +22,9 @@ public class TouristService {
         touristRepository.setAttractions(attractions);
     }
 
-    public void addAttractions(TouristAttraction touristAttraction){
+    public List<TouristAttraction> addAttractions(TouristAttraction touristAttraction){
         touristRepository.addAttractions(touristAttraction);
+        return touristRepository.getAttractions();
     }
 
     public void deleteAttraction(TouristAttraction touristAttraction){
