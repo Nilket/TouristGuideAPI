@@ -18,6 +18,10 @@ public class TouristService {
         return touristRepository.getAttractions();
     }
 
+    public TouristAttraction getAttractionsByName(String name){
+        return touristRepository.getAttractionsByName(name);
+    }
+
     public void setAttractions(List<TouristAttraction> attractions) {
         touristRepository.setAttractions(attractions);
     }

@@ -3,10 +3,7 @@ package tourism.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import tourism.model.TouristAttraction;
 import tourism.service.TouristService;
 
@@ -21,12 +18,18 @@ public class TouristController {
         this.touristService = touristService;
     }
 
-
     @GetMapping("")
     public ResponseEntity<List<TouristAttraction>> getAttractions(){
     List<TouristAttraction> touristAttractions = touristService.getAttractions();
     return new ResponseEntity<>(touristAttractions, HttpStatus.OK);
     }
+
+    @GetMapping("/{name}")
+    public ResponseEntity<TouristAttraction> getAttractionByName(@PathVariable String name){
+        TouristAttraction touristAttraction = touristService.getAttractionsByName(name);
+        return new ResponseEntity<TouristAttraction>(touristAttraction, HttpStatus.OK);
+    }
+
 
     /*
     Vi har lavet metoderne i service og repository void, det må de ikke være, vi kigger på det,

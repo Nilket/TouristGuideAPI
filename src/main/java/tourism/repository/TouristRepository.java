@@ -24,6 +24,15 @@ public class TouristRepository {
         return attractions;
     }
 
+    public TouristAttraction getAttractionsByName(String name){
+        for(TouristAttraction i : attractions){
+            if(i.getName().equalsIgnoreCase(name)){
+                return i;
+            }
+        }
+        return null;
+    }
+
     public void setAttractions(List<TouristAttraction> attractions) {
         this.attractions = attractions;
     }
