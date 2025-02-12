@@ -22,20 +22,26 @@ public class TouristService {
         return touristRepository.getAttractionsByName(name);
     }
 
-    public void setAttractions(List<TouristAttraction> attractions) {
+    public TouristRepository setAttractions(List<TouristAttraction> attractions) {
         touristRepository.setAttractions(attractions);
+        return touristRepository;
     }
+
+
 
     public List<TouristAttraction> addAttractions(TouristAttraction touristAttraction){
         touristRepository.addAttractions(touristAttraction);
         return touristRepository.getAttractions();
     }
 
-    public void deleteAttraction(TouristAttraction touristAttraction){
+    public TouristRepository deleteAttraction(TouristAttraction touristAttraction){
         touristRepository.deleteAttraction(touristAttraction);
+        return touristRepository;
     }
 
-    public void updateAttraction(String name, String description) {
+    public TouristRepository updateAttraction(String name, String description) {
         touristRepository.updateAttraction(name, description);
+        return touristRepository;
     }
+
 }

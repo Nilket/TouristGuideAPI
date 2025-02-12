@@ -11,6 +11,7 @@ import java.util.List;
 public class TouristRepository {
     private List<TouristAttraction> attractions = new ArrayList<>();
 
+
     public TouristRepository(List<TouristAttraction> attractions) {
         this.attractions = attractions;
         addAttractions(new TouristAttraction("Tivoli", "Tivoli er den suverænt mest besøgte turistattraktion i Danmark med 2,3 mio. besøgende i 2021. Parken er Europas fjerdemest besøgte forlystelsespark"));
@@ -43,8 +44,9 @@ public class TouristRepository {
 
     }
 
-    public void deleteAttraction(TouristAttraction touristAttraction){
+    public List<TouristAttraction> deleteAttraction(TouristAttraction touristAttraction){
         attractions.remove(touristAttraction);
+        return attractions;
     }
 
     public void updateAttraction(String name, String description){

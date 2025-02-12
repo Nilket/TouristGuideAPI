@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <link th:href="style.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <title>Tourist Attractions</title>
+</head>
+<body>
+    <header>
+        <h1>Tourist Attractions in copenhagen</h1> </header>
+    <article>
+        <div th:each =" items : ${attractions}" class="row">
+            <p th:text = "${items.name}" class="row"></p>
+            <p th:text =" ${items.description}" class="row"></p>
+        </div>
+    </article>
+
+</body>
+</html>
