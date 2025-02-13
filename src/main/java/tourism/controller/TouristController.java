@@ -62,6 +62,8 @@ public class TouristController {
     }
 
 
+
+
     @GetMapping("/test")
     public String test(Model model) {
         model.addAttribute("attractions", touristService.getAttractions());
