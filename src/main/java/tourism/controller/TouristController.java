@@ -10,14 +10,19 @@ import tourism.service.TouristService;
 
 import java.util.List;
 
-@SuppressWarnings("ALL")
+//@SuppressWarnings("ALL")
 @Controller
-@RequestMapping("attractions")
 public class TouristController {
     private final TouristService touristService;
 
     public TouristController(TouristService touristService) {
         this.touristService = touristService;
+    }
+
+    @GetMapping("/attractions")
+    public String test(Model model) {
+        model.addAttribute("attractions", touristService.getAttractions());
+        return "index";
     }
 
 
@@ -27,26 +32,12 @@ public class TouristController {
         return new ResponseEntity<>(touristAttractions, HttpStatus.OK);
     }
 
-    /*
-    @GetMapping("/all")
-    public String getAttractions(Model model) {
-        model.addAllAttributes(touristService.getAttractions());
-        return "all-attractions";
-    }
-    */
-
-    @GetMapping("/about")
-    public String getAboutUs(Model model) {
-
-        return "about-us";
-    }
 
     @GetMapping("/{name}")
     public ResponseEntity<TouristAttraction> getAttractionByName(@PathVariable String name) {
         TouristAttraction touristAttraction = touristService.getAttractionsByName(name);
         return new ResponseEntity<TouristAttraction>(touristAttraction, HttpStatus.OK);
     }
-
 
     //Posts
     @PostMapping("/add")
@@ -61,11 +52,10 @@ public class TouristController {
         return new ResponseEntity<>(newTouristAttraction, HttpStatus.OK);
     }
 
-
-    @GetMapping("/test")
-    public String test(Model model) {
-        model.addAttribute("attractions", touristService.getAttractions());
-        return "index";
+    @PostMapping("/delete/{name}")
+    public ResponseEntity<TouristAttraction> deleteTouristAttraction(@RequestBody TouristAttraction touristAttraction){
+        TouristAttraction newTouristAttraction = touristService.deleteAttraction(TouristAttraction);
+        return new ResponseEntity<>(newTouristAttraction, HttpStatus.OK);
     }
 
 
