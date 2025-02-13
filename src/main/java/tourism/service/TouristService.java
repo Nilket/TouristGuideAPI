@@ -32,9 +32,9 @@ public class TouristService {
         return touristAttraction;
     }
 
-    public TouristRepository deleteAttraction(TouristAttraction touristAttraction) {
+    public TouristAttraction deleteAttraction(TouristAttraction touristAttraction) {
         touristRepository.deleteAttraction(touristAttraction);
-        return touristRepository;
+        return touristAttraction;
     }
 
     public TouristAttraction updateAttraction(TouristAttraction touristAttraction) {

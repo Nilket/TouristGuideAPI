@@ -9,12 +9,16 @@
 <header>
     <h1>Tourist Attractions in copenhagen</h1>
 </header>
+
+<nav>
+    <a href="/attractionSuggestion.html">User tourist attraction suggestions</a>
+    <a href="/css/">JSON format</a>
+</nav>
+
 <article>
     <div th:each=" items : ${attractions}" class="row">
-        <div class="grid-container">
             <p th:text="${items.name}" class="row"></p>
             <p th:text=" ${items.description}" class="row"></p>
-        </div>
     </div>
 </article>
 
