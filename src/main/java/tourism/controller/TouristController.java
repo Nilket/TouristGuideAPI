@@ -15,15 +15,16 @@ import java.util.List;
 @RequestMapping("attractions")
 public class TouristController {
     private final TouristService touristService;
-    public TouristController (TouristService touristService){
+
+    public TouristController(TouristService touristService) {
         this.touristService = touristService;
     }
 
 
     @GetMapping("")
-    public ResponseEntity<List<TouristAttraction>> getAttractions(){
-    List<TouristAttraction> touristAttractions = touristService.getAttractions();
-    return new ResponseEntity<>(touristAttractions, HttpStatus.OK);
+    public ResponseEntity<List<TouristAttraction>> getAttractions() {
+        List<TouristAttraction> touristAttractions = touristService.getAttractions();
+        return new ResponseEntity<>(touristAttractions, HttpStatus.OK);
     }
 
     /*
@@ -34,8 +35,14 @@ public class TouristController {
     }
     */
 
+    @GetMapping("/about")
+    public String getAboutUs(Model model) {
+
+        return "about-us";
+    }
+
     @GetMapping("/{name}")
-    public ResponseEntity<TouristAttraction> getAttractionByName(@PathVariable String name){
+    public ResponseEntity<TouristAttraction> getAttractionByName(@PathVariable String name) {
         TouristAttraction touristAttraction = touristService.getAttractionsByName(name);
         return new ResponseEntity<TouristAttraction>(touristAttraction, HttpStatus.OK);
     }
@@ -43,24 +50,23 @@ public class TouristController {
 
     //Posts
     @PostMapping("/add")
-        public String addTouristAttraction(@ModelAttribute TouristAttraction touristAttraction){
-        touristService.addAttractions(touristAttraction);
-        return "index";
+    public ResponseEntity<TouristAttraction> addTouristAttraction(@RequestBody TouristAttraction touristAttraction) {
+        TouristAttraction newTouristAttraction = touristService.addAttractions(touristAttraction);
+        return new ResponseEntity<>(newTouristAttraction, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<TouristAttraction> updateTouristAttraction(@RequestBody TouristAttraction touristAttraction){
+        TouristAttraction newTouristAttraction = touristService.updateAttraction(touristAttraction);
+        return new ResponseEntity<>(newTouristAttraction, HttpStatus.OK);
     }
 
 
     @GetMapping("/test")
-    public String test(Model model){
+    public String test(Model model) {
         model.addAttribute("attractions", touristService.getAttractions());
         return "index";
     }
-
-
-
-
-
-
-
 
 
 }

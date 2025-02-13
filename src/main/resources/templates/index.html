@@ -1,19 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <link th:href="style.css" rel="stylesheet" type="text/css">
+    <link th:href="@{/style.css}" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
     <title>Tourist Attractions</title>
 </head>
 <body>
-    <header>
-        <h1>Tourist Attractions in copenhagen</h1> </header>
-    <article>
-        <div th:each =" items : ${attractions}" class="row">
-            <p th:text = "${items.name}" class="row"></p>
-            <p th:text =" ${items.description}" class="row"></p>
+<header>
+    <h1>Tourist Attractions in copenhagen</h1>
+</header>
+<article>
+    <div th:each=" items : ${attractions}" class="row">
+        <div class="grid-container">
+            <p th:text="${items.name}" class="row"></p>
+            <p th:text=" ${items.description}" class="row"></p>
         </div>
-    </article>
+    </div>
+</article>
+
+<nav>
+    <strong>Remember to pack the following stuff, while visiting Denmark:</strong>
+    <ul>
+        <li>Raincoat, as it can rain a lot</li>
+        <li>Cash, some places don't take creditcard</li>
+        <li>Comfortable shoewear, as you can walk a lot</li>
+        <li>A nice smile, as the Danes like to smile back</li>
+    </ul>
+</nav>
+
+<footer>
+    <nav>
+        <br><br/>
+        <Strong>Contact information: </Strong>
+        <p>Hannibal Ussing-Widholm: Hannibal@ussing.com</p>
+        <p>Jonas Nilket: Nilket@gmail.com</p>
+        <p>joakim Rosdal: Rosdal@gmail.com</p>
+    </nav>
+</footer>
 
 </body>
 </html>
