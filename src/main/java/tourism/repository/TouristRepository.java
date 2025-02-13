@@ -44,9 +44,15 @@ public class TouristRepository {
 
     }
 
-    public List<TouristAttraction> deleteAttraction(TouristAttraction touristAttraction) {
-        attractions.remove(touristAttraction);
-        return attractions;
+    public TouristAttraction deleteAttraction(String name) {
+       TouristAttraction touristAttraction1 = null;
+        for(TouristAttraction t : attractions){
+            if(t.getName().equalsIgnoreCase(name)){
+                touristAttraction1=t;
+                attractions.remove(t);
+            }
+        }
+        return touristAttraction1;
     }
 
     public TouristAttraction updateAttraction(TouristAttraction touristAttraction) {

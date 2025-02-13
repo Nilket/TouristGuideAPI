@@ -32,9 +32,9 @@ public class TouristService {
         return touristAttraction;
     }
 
-    public TouristAttraction deleteAttraction(TouristAttraction touristAttraction) {
-        touristRepository.deleteAttraction(touristAttraction);
-        return touristAttraction;
+    public TouristAttraction deleteAttraction(String name) {
+        return touristRepository.deleteAttraction(name);
+
     }
 
     public TouristAttraction updateAttraction(TouristAttraction touristAttraction) {
