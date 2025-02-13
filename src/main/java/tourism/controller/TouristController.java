@@ -26,7 +26,7 @@ public class TouristController {
     }
 
 
-    @GetMapping("")
+    @GetMapping("/json")
     public ResponseEntity<List<TouristAttraction>> getAttractions() {
         List<TouristAttraction> touristAttractions = touristService.getAttractions();
         return new ResponseEntity<>(touristAttractions, HttpStatus.OK);
@@ -54,7 +54,7 @@ public class TouristController {
 
     @PostMapping("/delete/{name}")
     public ResponseEntity<TouristAttraction> deleteTouristAttraction(@RequestBody TouristAttraction touristAttraction){
-        TouristAttraction newTouristAttraction = touristService.deleteAttraction(TouristAttraction);
+        TouristAttraction newTouristAttraction = touristService.deleteAttraction(touristAttraction);
         return new ResponseEntity<>(newTouristAttraction, HttpStatus.OK);
     }
 
