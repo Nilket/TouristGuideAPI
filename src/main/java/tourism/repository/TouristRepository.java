@@ -25,9 +25,9 @@ public class TouristRepository {
         return attractions;
     }
 
-    public TouristAttraction getAttractionsByName(String name){
-        for(TouristAttraction i : attractions){
-            if(i.getName().equalsIgnoreCase(name)){
+    public TouristAttraction getAttractionsByName(String name) {
+        for (TouristAttraction i : attractions) {
+            if (i.getName().equalsIgnoreCase(name)) {
                 return i;
             }
         }
@@ -38,22 +38,24 @@ public class TouristRepository {
         this.attractions = attractions;
     }
 
-    public List<TouristAttraction> addAttractions(TouristAttraction touristAttraction){
+    public TouristAttraction addAttractions(TouristAttraction touristAttraction) {
         attractions.add(touristAttraction);
-        return attractions;
+        return touristAttraction;
 
     }
 
-    public List<TouristAttraction> deleteAttraction(TouristAttraction touristAttraction){
+    public List<TouristAttraction> deleteAttraction(TouristAttraction touristAttraction) {
         attractions.remove(touristAttraction);
         return attractions;
     }
 
-    public void updateAttraction(String name, String description){
-        for(TouristAttraction i: attractions){
-            if(i.getName().equalsIgnoreCase(name)){
-                i.setDescription(description);
+    public TouristAttraction updateAttraction(TouristAttraction touristAttraction) {
+        for (TouristAttraction i : attractions) {
+            if (i.getName().equalsIgnoreCase(touristAttraction.getName())) {
+                i.setDescription(touristAttraction.getDescription());
+                return i;
             }
         }
+        return null;
     }
 }

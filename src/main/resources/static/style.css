@@ -3,7 +3,6 @@
     width: 33.33%;
 }
 
-
 .row:after {
     content: "";
     display: table;
@@ -14,10 +13,12 @@ h1 {
     background-color: antiquewhite;
 }
 
-article{
-    background-color: red;
-}
-
-p{
-    font-size: 100px;
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    /*grid-template-areas:*/
+    /*'top-left top-right'*/
+    /*'bot-left bot-right';*/
+    gap: 20px;
 }

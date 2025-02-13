@@ -18,7 +18,7 @@ public class TouristService {
         return touristRepository.getAttractions();
     }
 
-    public TouristAttraction getAttractionsByName(String name){
+    public TouristAttraction getAttractionsByName(String name) {
         return touristRepository.getAttractionsByName(name);
     }
 
@@ -27,21 +27,19 @@ public class TouristService {
         return touristRepository;
     }
 
-
-
-    public List<TouristAttraction> addAttractions(TouristAttraction touristAttraction){
+    public TouristAttraction addAttractions(TouristAttraction touristAttraction) {
         touristRepository.addAttractions(touristAttraction);
-        return touristRepository.getAttractions();
+        return touristAttraction;
     }
 
-    public TouristRepository deleteAttraction(TouristAttraction touristAttraction){
+    public TouristAttraction deleteAttraction(TouristAttraction touristAttraction) {
         touristRepository.deleteAttraction(touristAttraction);
-        return touristRepository;
+        return touristAttraction;
     }
 
-    public TouristRepository updateAttraction(String name, String description) {
-        touristRepository.updateAttraction(name, description);
-        return touristRepository;
+    public TouristAttraction updateAttraction(TouristAttraction touristAttraction) {
+        touristRepository.updateAttraction(touristAttraction);
+        return touristAttraction;
     }
 
 }
