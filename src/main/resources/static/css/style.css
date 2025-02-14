@@ -10,8 +10,14 @@
 }
 
 h1 {
-    <!--background-color: antiquewhite;-->
-    color: white;
+    background-color: #c48080;
+    text-align: left;
+}
+
+h2 {
+    font-size: 25px;
+    text-align: center;
+    color: black;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -33,6 +39,12 @@ h1 {
 .headline-image {
     max-width: 100%;
     position: relative;
+    text-align: right;
+}
+
+.headline-image:hover .headline-overlay {
+    bottom: 0;
+    height: 100%;
 }
 
 .img {
@@ -51,9 +63,4 @@ h1 {
     background-color: #c48080;
     overflow: hidden;
     transition: .5s ease;
-}
-
-.headline-image:hover .headline-overlay {
-    bottom: 0;
-    height: 100%;
 }
