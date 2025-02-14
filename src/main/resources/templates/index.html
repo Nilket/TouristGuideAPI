@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <link th:href="@{/style.css}" rel="stylesheet" type="text/css">
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css">
     <title>Tourist Attractions</title>
 </head>
 <body>
 <header>
-    <h1>Tourist Attractions in copenhagen</h1>
+    <h1>Tourist Attractions in Copenhagen</h1>
+    <div class="headline-image">
+        <img class="img" src="/images/TouristGuideAPIBanner.png" alt="Tivoli, DR Byen, Den Lille Havfrue & Nyhavn">
+        <div class="headline-overlay">
+            <h2>Where Dreams Become Reality!</h2>
+        </div>
+    </div>
 </header>
 
 <nav>
-    <a href="/attractionSuggestion.html">User tourist attraction suggestions</a>
-    <a href="json">JSON format</a>
+    <a href="http://localhost:8080/attractionSuggestion.html">User tourist attraction suggestions</a>
+    <a href="http://localhost:8080/">JSON format</a>
 </nav>
 
 <article>
     <div th:each=" items : ${attractions}" class="row">
-            <p th:text="${items.name}" class="row"></p>
-            <p th:text=" ${items.description}" class="row"></p>
+        <p th:text="${items.name}" class="row"></p>
+        <p th:text=" ${items.description}" class="row"></p>
     </div>
 </article>
 
@@ -38,7 +44,7 @@
         <Strong>Contact information: </Strong>
         <p>Hannibal Ussing-Widholm: Hannibal@ussing.com</p>
         <p>Jonas Nilket: Nilket@gmail.com</p>
-        <p>joakim Rosdal: Rosdal@gmail.com</p>
+        <p>Joakim Rosdal: Rosdal@gmail.com</p>
     </nav>
 </footer>
 
