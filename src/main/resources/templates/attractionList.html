@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/attractionList.html/style.css}" href="">
@@ -12,12 +12,14 @@
     <tr>
       <th>Navn</th>
       <th>Beskrivelse</th>
+
     </tr>
   </thead>
   <tbody>
     <tr th:each ="attraction : ${attractionsList} ">
       <td th:text ="${attraction.getName()}" ></td>
       <td th:text="${attraction.getDescription()}" ></td>
+      <td>Tags</td>
     </tr>
   </tbody>
 </table>
