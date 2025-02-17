@@ -37,10 +37,12 @@ public class TouristController {
     }
 
     @GetMapping("/attractionsList")
-    public String attractionsList(Model model){
+    public String attractionsList(Model model) {
         model.addAttribute("attractionsList", touristService.getAttractions());
         return "attractionList";
     }
+
+
 
 
     @GetMapping("/json")
@@ -55,22 +57,6 @@ public class TouristController {
         model.addAttribute("attractionsByName", touristService.getAttractionsByName(name));
         return "index";
     }
-
-    // Get attractions/{name}/tags
-
-    // get attractions/add
-
-    // get attractions/{name}/edit
-
-
-    // Post attractions/save
-
-    // Post attractions/update
-
-    // Post attractions/delete/{name}
-
-
-
 
     //Posts
     @PostMapping("/add")
