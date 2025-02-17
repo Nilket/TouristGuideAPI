@@ -62,13 +62,15 @@ public class TouristController {
         return "index";
     }
 
-    //Posts
-    @PostMapping("/add")
-    public ResponseEntity<TouristAttraction> addTouristAttraction(@RequestBody TouristAttraction touristAttraction) {
-        TouristAttraction newTouristAttraction = touristService.addAttractions(touristAttraction);
-        return new ResponseEntity<>(newTouristAttraction, HttpStatus.CREATED);
+
+    @GetMapping("/add")
+    public String addTouristAttraction(@RequestBody TouristAttraction touristAttraction, Model model) {
+        model.addAttribute("Tilføj", touristService.addAttractions(touristAttraction));
+        return null; //Placeholder indtil vi får det tilføjet
     }
 
+
+    //Posts
     @PostMapping("/update")
     public ResponseEntity<TouristAttraction> updateTouristAttraction(@RequestBody TouristAttraction touristAttraction){
         TouristAttraction newTouristAttraction = touristService.updateAttraction(touristAttraction);
