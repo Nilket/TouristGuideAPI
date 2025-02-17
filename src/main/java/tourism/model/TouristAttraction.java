@@ -1,8 +1,12 @@
 package tourism.model;
 
+import java.util.List;
+
 public class TouristAttraction {
     private String name;
     private String description;
+    private List<Tags> tags;
+    private Byer by;
 
     public TouristAttraction(String name, String description) {
         this.name = name;
