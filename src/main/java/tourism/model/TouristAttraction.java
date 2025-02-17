@@ -8,9 +8,11 @@ public class TouristAttraction {
     private List<Tags> tags;
     private Byer by;
 
-    public TouristAttraction(String name, String description) {
+    public TouristAttraction(String name, String description, List<Tags> tags, Byer by) {
         this.name = name;
         this.description = description;
+        this.tags = tags;
+        this.by = by;
     }
 
     public String getName() {
