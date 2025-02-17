@@ -18,6 +18,7 @@
     <tr th:each ="attraction : ${attractionsList} ">
       <td th:text ="${attraction.getName()}" ></td>
       <td th:text="${attraction.getDescription()}" ></td>
+        <td><a th:href="@{'/attraction/' + ${attraction.getName()} + '/tags'}"> Tags</a> </td>
     </tr>
   </tbody>
 </table>
