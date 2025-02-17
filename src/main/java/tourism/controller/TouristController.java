@@ -10,6 +10,7 @@ import tourism.service.TouristService;
 
 import java.util.List;
 
+//@SuppressWarnings("ALL")
 @Controller
 public class TouristController {
     private final TouristService touristService;
@@ -25,13 +26,12 @@ public class TouristController {
     }
 
     @GetMapping("/suggestion")
-    public String suggestion(Model model) {
+    public String suggestion(Model model){
         model.addAttribute("attractions", touristService.getAttractions());
         return "attractionSuggestion";
     }
-
     @GetMapping("/submit")
-    public String submit(Model model) {
+    public String submit(Model model){
         model.addAttribute("attractions", touristService.getAttractions());
         return "suggestionsSubmit";
     }
@@ -43,6 +43,8 @@ public class TouristController {
     }
 
 
+
+
     @GetMapping("/json")
     public ResponseEntity<List<TouristAttraction>> getAttractions() {
         List<TouristAttraction> touristAttractions = touristService.getAttractions();
@@ -50,30 +52,33 @@ public class TouristController {
     }
 
 
-    @GetMapping("/attractions/{name}")
-    public ResponseEntity<TouristAttraction> getAttractionByName(@PathVariable String name) {
-        TouristAttraction touristAttraction = touristService.getAttractionsByName(name);
-        return new ResponseEntity<>(touristAttraction, HttpStatus.OK);
+    @GetMapping("attractions/{name}")
+    public String getAttractionByName(@PathVariable String name, Model model){
+        model.addAttribute("attractionsByName", touristService.getAttractionsByName(name));
+        return "index";
     }
 
     //Posts
-    @PostMapping("/attractions/add")
+    @PostMapping("/add")
     public ResponseEntity<TouristAttraction> addTouristAttraction(@RequestBody TouristAttraction touristAttraction) {
         TouristAttraction newTouristAttraction = touristService.addAttractions(touristAttraction);
         return new ResponseEntity<>(newTouristAttraction, HttpStatus.CREATED);
     }
 
-    @PostMapping("/attractions/update")
-    public ResponseEntity<TouristAttraction> updateTouristAttraction(@RequestBody TouristAttraction touristAttraction) {
+    @PostMapping("/update")
+    public ResponseEntity<TouristAttraction> updateTouristAttraction(@RequestBody TouristAttraction touristAttraction){
         TouristAttraction newTouristAttraction = touristService.updateAttraction(touristAttraction);
         return new ResponseEntity<>(newTouristAttraction, HttpStatus.OK);
     }
 
-    @PostMapping("/attractions/delete/{name}")
-    public ResponseEntity<TouristAttraction> deleteTouristAttraction(@PathVariable String name) {
+    @PostMapping("/delete/{name}")
+    public ResponseEntity<TouristAttraction> deleteTouristAttraction(@PathVariable String name){
         TouristAttraction newTouristAttraction = touristService.deleteAttraction(name);
         return new ResponseEntity<>(newTouristAttraction, HttpStatus.OK);
     }
+
+
+
 
 
 }
