@@ -9,6 +9,7 @@ public class TouristAttraction {
     private Byer by;
     private String URLName;
 
+
     public TouristAttraction(String name, String description, List<Tags> tags, Byer by) {
         this.name = name;
         this.description = description;
@@ -26,6 +27,14 @@ public class TouristAttraction {
             }
         }
         return URLName;
+    }
+
+    public List<Tags> getTags() {
+        return tags;
+    }
+
+    public Byer getBy() {
+        return by;
     }
 
     public String getName() {

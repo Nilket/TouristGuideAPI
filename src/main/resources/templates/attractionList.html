@@ -10,16 +10,17 @@
 <table border="1">
     <thead>
     <tr>
-        <th>Navn</th>
-        <th>Beskrivelse</th>
+      <th>Navn</th>
+      <th>Beskrivelse</th>
     </tr>
-    </thead>
-    <tbody>
-    <tr th:each="attraction : ${attractionsList} ">
-        <td th:text="${attraction.getName()}"></td>
-        <td th:text="${attraction.getDescription()}"></td>
+  </thead>
+  <tbody>
+    <tr th:each ="attraction : ${attractionsList} ">
+      <td th:text ="${attraction.getName()}" ></td>
+      <td th:text="${attraction.getDescription()}" ></td>
+        <td><a th:href="@{'/attraction/' + ${attraction.getName()} + '/tags'}"> Tags</a> </td>
     </tr>
-    </tbody>
+  </tbody>
 </table>
 
 </body>
