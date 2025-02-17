@@ -53,7 +53,7 @@ public class TouristController {
 
 
     @GetMapping("attractions/{name}")
-    public String getAttractionByName(@PathVariable String name, Model model) {
+    public String getAttractionByName(@PathVariable String name, Model model){
         model.addAttribute("attractionsByName", touristService.getAttractionsByName(name));
         return "index";
     }
