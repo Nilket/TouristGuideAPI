@@ -20,7 +20,7 @@ public class TouristController {
     }
 
     @GetMapping("/attractions")
-    public String test(Model model) {
+    public String attractions(Model model) {
         model.addAttribute("attractions", touristService.getAttractions());
         return "index";
     }
@@ -35,6 +35,8 @@ public class TouristController {
         model.addAttribute("attractions", touristService.getAttractions());
         return "suggestionsSubmit";
     }
+
+
 
 
     @GetMapping("/json")
@@ -68,6 +70,8 @@ public class TouristController {
         TouristAttraction newTouristAttraction = touristService.deleteAttraction(name);
         return new ResponseEntity<>(newTouristAttraction, HttpStatus.OK);
     }
+
+
 
 
 }
