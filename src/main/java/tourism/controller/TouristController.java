@@ -36,6 +36,12 @@ public class TouristController {
         return "suggestionsSubmit";
     }
 
+    @GetMapping("attractionsList.html")
+    public String attractionsList(Model model){
+        model.addAttribute("attractionsList", touristService.getAttractions());
+        return "attractionList";
+    }
+
 
 
 
@@ -70,6 +76,7 @@ public class TouristController {
         TouristAttraction newTouristAttraction = touristService.deleteAttraction(name);
         return new ResponseEntity<>(newTouristAttraction, HttpStatus.OK);
     }
+
 
 
 
