@@ -7,12 +7,25 @@ public class TouristAttraction {
     private String description;
     private List<Tags> tags;
     private Byer by;
+    private String URLName;
 
     public TouristAttraction(String name, String description, List<Tags> tags, Byer by) {
         this.name = name;
         this.description = description;
         this.tags = tags;
         this.by = by;
+        this.URLName = generateURLName();
+
+    }
+
+    public String generateURLName() {
+        String URLName = "";
+        for (String s : this.name.split("")) {
+            if (!s.equalsIgnoreCase(" ")) {
+                URLName += s;
+            }
+        }
+        return URLName;
     }
 
     public String getName() {

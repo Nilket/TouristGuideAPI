@@ -42,8 +42,12 @@ public class TouristController {
         return "attractionList";
     }
 
+    @GetMapping("/attractions/{name}/edit")
+    public String editWindow(String name, Model model){
+        model.addAttribute("editWindow", touristService.getAttractionsByName(name));
 
-
+        return "edit";
+    }
 
     @GetMapping("/json")
     public ResponseEntity<List<TouristAttraction>> getAttractions() {
