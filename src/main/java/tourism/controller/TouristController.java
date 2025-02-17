@@ -25,6 +25,17 @@ public class TouristController {
         return "index";
     }
 
+    @GetMapping("/suggestion")
+    public String suggestion(Model model){
+        model.addAttribute("attractions", touristService.getAttractions());
+        return "attractionSuggestion";
+    }
+    @GetMapping("/submit")
+    public String submit(Model model){
+        model.addAttribute("attractions", touristService.getAttractions());
+        return "suggestionsSubmit";
+    }
+
 
     @GetMapping("/json")
     public ResponseEntity<List<TouristAttraction>> getAttractions() {
@@ -36,7 +47,7 @@ public class TouristController {
     @GetMapping("/{name}")
     public ResponseEntity<TouristAttraction> getAttractionByName(@PathVariable String name) {
         TouristAttraction touristAttraction = touristService.getAttractionsByName(name);
-        return new ResponseEntity<TouristAttraction>(touristAttraction, HttpStatus.OK);
+        return new ResponseEntity<>(touristAttraction, HttpStatus.OK);
     }
 
     //Posts
