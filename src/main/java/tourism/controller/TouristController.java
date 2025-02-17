@@ -36,13 +36,11 @@ public class TouristController {
         return "suggestionsSubmit";
     }
 
-    @GetMapping("attractionsList.html")
+    @GetMapping("/attractionsList")
     public String attractionsList(Model model){
         model.addAttribute("attractionsList", touristService.getAttractions());
         return "attractionList";
     }
-
-
 
 
     @GetMapping("/json")
@@ -52,11 +50,27 @@ public class TouristController {
     }
 
 
-    @GetMapping("/{name}")
-    public ResponseEntity<TouristAttraction> getAttractionByName(@PathVariable String name) {
-        TouristAttraction touristAttraction = touristService.getAttractionsByName(name);
-        return new ResponseEntity<>(touristAttraction, HttpStatus.OK);
+    @GetMapping("attractions/{name}")
+    public String getAttractionByName(@PathVariable String name, Model model) {
+        model.addAttribute("attractionsByName", touristService.getAttractionsByName(name));
+        return "index";
     }
+
+    // Get attractions/{name}/tags
+
+    // get attractions/add
+
+    // get attractions/{name}/edit
+
+
+    // Post attractions/save
+
+    // Post attractions/update
+
+    // Post attractions/delete/{name}
+
+
+
 
     //Posts
     @PostMapping("/add")
