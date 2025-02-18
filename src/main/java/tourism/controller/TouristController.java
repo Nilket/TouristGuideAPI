@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import tourism.model.TouristAttraction;
 import tourism.service.TouristService;
 
-import java.util.List;
+
 
 @Controller
 public class TouristController {
@@ -16,6 +16,12 @@ public class TouristController {
 
     public TouristController(TouristService touristService) {
         this.touristService = touristService;
+    }
+
+    @PostMapping("/attractions/{name}/tags")
+    public String tags(Model model, @ModelAttribute("touristAttraction") TouristAttraction touristAttraction){
+        model.addAttribute("touristAttraction", touristAttraction);
+        return "tags";
     }
 
     @GetMapping("/attractions")
@@ -38,15 +44,17 @@ public class TouristController {
     @GetMapping("/attractionsList")
     public String attractionsList(Model model) {
         model.addAttribute("attractionsList", touristService.getAttractions());
+        model.addAttribute("touristAttraction",new TouristAttraction());
         return "attractionList";
     }
 
+    /*
     @GetMapping("/attractions/{name}/edit")
     public String editWindow(String name, Model model){
         model.addAttribute("editWindow", touristService.getAttractionsByName(name));
 
         return "edit";
-    }
+    } */
 
 
 

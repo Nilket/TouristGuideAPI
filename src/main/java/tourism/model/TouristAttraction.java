@@ -19,6 +19,9 @@ public class TouristAttraction {
 
     }
 
+    public TouristAttraction() {
+    }
+
     public String generateURLName() {
         String URLName = "";
         for (String s : this.name.split("")) {
