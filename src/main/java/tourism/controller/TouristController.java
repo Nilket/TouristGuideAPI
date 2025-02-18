@@ -10,7 +10,6 @@ import tourism.service.TouristService;
 
 import java.util.List;
 
-//@SuppressWarnings("ALL")
 @Controller
 public class TouristController {
     private final TouristService touristService;
@@ -49,17 +48,12 @@ public class TouristController {
         return "edit";
     }
 
-    @GetMapping("/json")
-    public ResponseEntity<List<TouristAttraction>> getAttractions() {
-        List<TouristAttraction> touristAttractions = touristService.getAttractions();
-        return new ResponseEntity<>(touristAttractions, HttpStatus.OK);
-    }
 
 
     @GetMapping("attractions/{name}")
     public String getAttractionByName(@PathVariable String name, Model model){
         model.addAttribute("attractionsByName", touristService.getAttractionsByName(name));
-        return "index";
+        return "attraction";
     }
 
 
