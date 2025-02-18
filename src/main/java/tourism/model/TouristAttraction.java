@@ -56,5 +56,15 @@ public class TouristAttraction {
         this.description = description;
     }
 
+    public void setBy(Byer by) {
+        this.by = by;
+    }
 
+    public void setURLName(String URLName) {
+        this.URLName = URLName;
+    }
+
+    public void setTags(List<Tags> tags) {
+        this.tags = tags;
+    }
 }

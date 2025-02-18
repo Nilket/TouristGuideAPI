@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import tourism.model.Byer;
+import tourism.model.Tags;
 import tourism.model.TouristAttraction;
 import tourism.service.TouristService;
 
@@ -29,16 +31,18 @@ public class TouristController {
         model.addAttribute("attractions", touristService.getAttractions());
         return "index";
     }
-
+    /*
     @GetMapping("/suggestion")
     public String suggestion(Model model){
         model.addAttribute("attractions", touristService.getAttractions());
-        return "attractionSuggestion";
-    }
+        return "add";
+    } */
+
+
     @GetMapping("/submit")
     public String submit(Model model){
         model.addAttribute("attractions", touristService.getAttractions());
-        return "suggestionsSubmit";
+        return "save";
     }
 
     @GetMapping("/attractionsList")
@@ -66,9 +70,13 @@ public class TouristController {
 
 
     @GetMapping("/add")
-    public String addTouristAttraction(@RequestBody TouristAttraction touristAttraction, Model model) {
-        model.addAttribute("Tilføj", touristService.addAttractions(touristAttraction));
-        return null; //Placeholder indtil vi får det tilføjet
+    public String addTouristAttraction(Model model) {
+        TouristAttraction attraction = new TouristAttraction();
+        attraction.setBy(Byer.KØBENHAVN);
+        model.addAttribute("attraction", attraction);
+        model.addAttribute("city", Byer.values());
+        model.addAttribute("tags", Tags.values());
+        return "add";
     }
 
 
