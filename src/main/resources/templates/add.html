@@ -33,7 +33,7 @@
             <legend>Tags:</legend>
             <label for="tags"></label>
             <div id="tags" th:each="tags : ${tags}">
-                <input type="radio" th:field="*{tags}" th:value="${tags}" ><span th:text="${tags.displayName}"></span>
+                <input type=checkbox th:field="*{tags}" th:value="${tags}" ><span th:text="${tags.displayName}"></span>
             </div>
         </fieldset>
 
