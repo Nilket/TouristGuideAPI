@@ -5,10 +5,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import tourism.model.Byer;
+import tourism.model.Tags;
 import tourism.model.TouristAttraction;
 import tourism.service.TouristService;
 
 import java.util.List;
+
 
 @Controller
 public class TouristController {
@@ -18,35 +21,47 @@ public class TouristController {
         this.touristService = touristService;
     }
 
+    @GetMapping("/attractions/{name}/tags")
+    public String tags(Model model, @PathVariable String name){
+        List<Tags>listOfTags = touristService.getTags(name);
+
+
+        return "tags";
+    }
+
     @GetMapping("/attractions")
     public String attractions(Model model) {
         model.addAttribute("attractions", touristService.getAttractions());
         return "index";
     }
-
+    /*
     @GetMapping("/suggestion")
     public String suggestion(Model model){
         model.addAttribute("attractions", touristService.getAttractions());
-        return "attractionSuggestion";
-    }
-    @GetMapping("/submit")
+        return "add";
+    } */
+
+
+    @GetMapping("/save")
     public String submit(Model model){
         model.addAttribute("attractions", touristService.getAttractions());
-        return "suggestionsSubmit";
+        return "save";
     }
 
     @GetMapping("/attractionsList")
     public String attractionsList(Model model) {
         model.addAttribute("attractionsList", touristService.getAttractions());
+        model.addAttribute("touristAttraction",new TouristAttraction());
         return "attractionList";
     }
 
+    /*
     @GetMapping("/attractions/{name}/edit")
     public String editWindow(String name, Model model){
         model.addAttribute("editWindow", touristService.getAttractionsByName(name));
 
         return "edit";
-    }
+    } */
 
 
 
@@ -58,9 +73,13 @@ public class TouristController {
 
 
     @GetMapping("/add")
-    public String addTouristAttraction(@RequestBody TouristAttraction touristAttraction, Model model) {
-        model.addAttribute("Tilføj", touristService.addAttractions(touristAttraction));
-        return null; //Placeholder indtil vi får det tilføjet
+    public String addTouristAttraction(Model model) {
+        TouristAttraction attraction = new TouristAttraction();
+        attraction.setBy(Byer.KØBENHAVN);
+        model.addAttribute("attraction", attraction);
+        model.addAttribute("city", Byer.values());
+        model.addAttribute("tags", Tags.values());
+        return "add";
     }
 
 

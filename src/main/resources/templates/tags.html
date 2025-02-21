@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Tags</title>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <title>Tourist Attraction Tags</title>
 </head>
 <body>
+    <div align="center">
+        <h1>Information about the tourist attraction</h1>
+        <div>
+            <p><strong th:text="${touristAttraction.getName}"></strong></p>
+            <div th:each=" tags : ${touristAttraction}">
+                <p th:text="${tags.getTags()}"></p>
 
+            </div>
+        </div>
+    </div>
 
 </body>
-</html>

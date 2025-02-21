@@ -27,6 +27,15 @@ public class TouristRepository {
         return attractions;
     }
 
+    public List<Tags> getTags(String name){
+        for(TouristAttraction i: attractions){
+            if(i.getName().equalsIgnoreCase(name)){
+                return i.getTags();
+            }
+        }
+        return null;
+    }
+
     public TouristAttraction getAttractionsByName(String name) {
         for (TouristAttraction i : attractions) {
             if (i.getName().equalsIgnoreCase(name)) {

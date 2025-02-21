@@ -28,10 +28,26 @@
             <label for="description">Description of attraction:</label>
             <input type="text" id="description">
         </p>
+        <p>
+            <label for="city">City:</label>
+            <select id="city" name="city" th:field="*{city}">
+                <option th:each="by : ${city}" th:value="${by}" th:text="${by.displayName}">City</option>
+            </select>
+        </p>
+        <br>
+        <fieldset>
+            <legend>Tags:</legend>
+            <label for="tags"></label>
+            <div id="tags" th:each="tags : ${tags}">
+                <input type="radio" th:field="*{tags}" th:value="${tags}" ><span th:text="${tags.displayName}"></span>
+
+            </div>
+        </fieldset>
+
+
+
     </fieldset>
-    <a th:href="@{/submit}">
-        <p align="center">klik her</p>
-    </a>
+    <button th:href="@{save.html}">Submit</button>
 
 </form>
 
