@@ -42,11 +42,7 @@ public class TouristController {
     } */
 
 
-    @GetMapping("/save")
-    public String submit(Model model){
-        model.addAttribute("attractions", touristService.getAttractions());
-        return "save";
-    }
+
 
     @GetMapping("/attractionsList")
     public String attractionsList(Model model) {
@@ -80,6 +76,17 @@ public class TouristController {
         model.addAttribute("city", Byer.values());
         model.addAttribute("tags", Tags.values());
         return "add";
+    }
+    @PostMapping("/add")
+    public String save(@ModelAttribute TouristAttraction touristAttraction){
+        touristService.addAttractions(touristAttraction);
+        return "redirect:/save";
+    }
+
+    @GetMapping("/save")
+    public String savedAttractions(Model model){
+        model.addAttribute("attractions", touristService.getAttractions());
+        return "save";
     }
 
 

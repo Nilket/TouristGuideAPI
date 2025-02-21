@@ -52,7 +52,6 @@ public class TouristRepository {
     public TouristAttraction addAttractions(TouristAttraction touristAttraction) {
         attractions.add(touristAttraction);
         return touristAttraction;
-
     }
 
     public TouristAttraction deleteAttraction(String name) {
