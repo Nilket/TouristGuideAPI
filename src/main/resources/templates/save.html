@@ -11,6 +11,7 @@
 <br>
     <article> Info:
         <div th:each = "attr : ${attractions}">
+            <p>Attraction:</p>
             <p th:text ="${attr.getName()}"></p>
             <p th:text ="${attr.getDescription()}"></p>
             <p th:text ="${attr.getBy()}"></p>
