@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en" xmlns:th="https://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text=""></title>
 </head>
 <body>
+<form action="" method="post">
+    <fieldset align="center">
+        <legend>Fil out the form:</legend>
+        <p>
+            <label for="name">Full name:</label>
+            <input type="text" id="name"/>
+        </p>
+        <p>
+            <label for="email"> Email:</label>
+            <input type="email" id="email">
+        </p>
+        <p>
+            <label for="attraction">Name of attraction:</label>
+            <input type="text" id="attraction">
+        </p>
+        <p>
+            <label for="description">Description of attraction:</label>
+            <input type="text" id="description">
+        </p>
+    </fieldset>
+    <a th:href="@{/submit}">
+        <p align="center">klik her</p>
+    </a>
+</form>
+
 
 </body>
 </html>
