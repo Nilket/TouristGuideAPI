@@ -35,17 +35,19 @@
             </select>
         </p>
         <br>
-            <label for="tags">Tags:</label>
+        <fieldset>
+            <legend>Tags:</legend>
+            <label for="tags"></label>
             <div id="tags" th:each="tags : ${tags}">
                 <input type="radio" th:field="*{tags}" th:value="${tags}" ><span th:text="${tags.displayName}"></span>
+
             </div>
+        </fieldset>
 
 
 
     </fieldset>
-    <a th:href="@{/submit}">
-        <p align="center">klik her</p>
-    </a>
+    <button th:href="@{save.html}">Submit</button>
 
 </form>
 

@@ -10,6 +10,7 @@ import tourism.model.Tags;
 import tourism.model.TouristAttraction;
 import tourism.service.TouristService;
 
+import java.util.List;
 
 
 @Controller
@@ -20,9 +21,11 @@ public class TouristController {
         this.touristService = touristService;
     }
 
-    @PostMapping("/attractions/{name}/tags")
-    public String tags(Model model, @ModelAttribute("touristAttraction") TouristAttraction touristAttraction){
-        model.addAttribute("touristAttraction", touristAttraction);
+    @GetMapping("/attractions/{name}/tags")
+    public String tags(Model model, @PathVariable String name){
+        List<Tags>listOfTags = touristService.getTags(name);
+
+
         return "tags";
     }
 
@@ -39,7 +42,7 @@ public class TouristController {
     } */
 
 
-    @GetMapping("/submit")
+    @GetMapping("/save")
     public String submit(Model model){
         model.addAttribute("attractions", touristService.getAttractions());
         return "save";
