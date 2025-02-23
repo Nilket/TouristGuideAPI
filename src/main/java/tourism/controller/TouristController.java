@@ -89,18 +89,17 @@ public class TouristController {
         return "save";
     }
 
-
     //Posts
-    @PostMapping("/update")
-    public ResponseEntity<TouristAttraction> updateTouristAttraction(@RequestBody TouristAttraction touristAttraction){
-        TouristAttraction newTouristAttraction = touristService.updateAttraction(touristAttraction);
-        return new ResponseEntity<>(newTouristAttraction, HttpStatus.OK);
+    @PostMapping("attractions/update")
+    public String updateTouristAttraction(@ModelAttribute TouristAttraction touristAttraction){
+        touristService.updateAttraction(touristAttraction);
+        return "redirect:/index";
     }
 
-    @PostMapping("/delete/{name}")
-    public ResponseEntity<TouristAttraction> deleteTouristAttraction(@PathVariable String name){
-        TouristAttraction newTouristAttraction = touristService.deleteAttraction(name);
-        return new ResponseEntity<>(newTouristAttraction, HttpStatus.OK);
+    @PostMapping("attractions/delete/{name}")
+    public String deleteTouristAttraction(@PathVariable String name){
+        touristService.deleteAttraction(name);
+        return "redirect:index";
     }
 
 
