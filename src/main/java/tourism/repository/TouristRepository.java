@@ -8,6 +8,7 @@ import tourism.model.TouristAttraction;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Repository
 public class TouristRepository {
@@ -65,7 +66,7 @@ public class TouristRepository {
         return touristAttraction1;
     }
 
-    public TouristAttraction updateAttraction(TouristAttraction touristAttraction) {
+    /* public TouristAttraction updateAttraction(TouristAttraction touristAttraction) {
         for (TouristAttraction i : attractions) {
             if (i.getName().equalsIgnoreCase(touristAttraction.getName())) {
                 i.setDescription(touristAttraction.getDescription());
@@ -73,5 +74,33 @@ public class TouristRepository {
             }
         }
         return null;
+    } */
+
+
+
+    public void updateAttraction(TouristAttraction nyAttraction){
+        for(TouristAttraction i: attractions){
+            if(i.getId().equals(nyAttraction.getId())){
+                i.setName(nyAttraction.getName());
+                i.setBy(nyAttraction.getBy());
+                i.setDescription(nyAttraction.getDescription());
+                i.setTags(nyAttraction.getTags());
+            }
+        }
     }
+
+    public TouristAttraction getOrderById(UUID id){
+        for(TouristAttraction i: attractions){
+            if(i.getId().equals(id)){
+                return i;
+            }
+        } return null;
+    }
+
+    public void removeAttraction(UUID id){
+        attractions.remove(id);
+    }
+
+
+
 }

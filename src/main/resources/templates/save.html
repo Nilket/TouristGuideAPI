@@ -9,13 +9,14 @@
     <h1>These are the submitted attractions from our users:</h1>
 </header>
 <br>
-    <article> Info:
+    <article>
         <div th:each = "attr : ${attractions}">
-            <p>Attraction:</p>
-            <p th:text ="${attr.getName()}"></p>
-            <p th:text ="${attr.getDescription()}"></p>
-            <p th:text ="${attr.getBy()}"></p>
+            <p>Name of the attraction:</p>
+            <p th:text ="${attr.getName()}"></p> Description:
+            <p th:text ="${attr.getDescription()}"></p> City:
+            <p th:text ="${attr.getBy()}"></p> Tags associated with the attraction:
             <p th:text ="${attr.getTags()}"></p>
+            <br>
 
         </div>
     </article>

@@ -1,6 +1,7 @@
 package tourism.model;
 
 import java.util.List;
+import java.util.UUID;
 
 public class TouristAttraction {
     private String name;
@@ -8,6 +9,7 @@ public class TouristAttraction {
     private List<Tags> tags;
     private Byer by;
     private String URLName;
+    private UUID id;
 
 
     public TouristAttraction(String name, String description, List<Tags> tags, Byer by) {
@@ -16,6 +18,8 @@ public class TouristAttraction {
         this.tags = tags;
         this.by = by;
         this.URLName = generateURLName();
+        this.id = UUID.randomUUID();
+
 
     }
 
@@ -34,6 +38,14 @@ public class TouristAttraction {
 
     public List<Tags> getTags() {
         return tags;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public Byer getBy() {
@@ -67,4 +79,7 @@ public class TouristAttraction {
     public void setTags(List<Tags> tags) {
         this.tags = tags;
     }
+
+
+
 }

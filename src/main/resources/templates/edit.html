@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit an attraction</title>
+</head>
+<body>
+<form action="#" th:action="@{/attraction/edit/{id}}" th:object="${attraction}" method="post">
+    <fieldset align="center">
+        <legend>Fil out the form:</legend>
+
+
+        <label for="name">Name of attraction:</label>
+        <textarea id="name" name="name" required></textarea>
+        <br>
+
+        <label for="description">Description of attraction:</label>
+        <textarea id="description" name="description"></textarea>
+
+
+        <p>
+            <label for="city">City:</label>
+            <select id="city" name="city" th:field="*{by}">
+                <option th:each="by : ${city}" th:value="${by}" th:text="${by.displayName}">City</option>
+            </select>
+        </p>
+        <br>
+        <fieldset>
+            <legend>Tags:</legend>
+            <label for="tags"></label>
+            <div id="tags" th:each="tags : ${tags}">
+                <input type=checkbox th:field="*{tags}" th:value="${tags}" ><span th:text="${tags.displayName}"></span>
+            </div>
+        </fieldset>
+
+
+
+    </fieldset>
+    <button th:href="@{save.html}" type="submit">Submit</button>
+
+</form>
+
+
+
+</body>
+</html>

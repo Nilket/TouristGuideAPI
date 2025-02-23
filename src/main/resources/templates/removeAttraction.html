@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Remove attraction</title>
+</head>
+<body>
+<h1>You have removed an attraction</h1>
+
+<article>
+  <div th:each = "attr : ${attractions}">
+    <p>Name of the attraction:</p>
+    <p th:text ="${attr.getName()}"></p> Description:
+    <p th:text ="${attr.getDescription()}"></p> City:
+    <p th:text ="${attr.getBy()}"></p> Tags associated with the attraction:
+    <p th:text ="${attr.getTags()}"></p>
+    <br>
+
+  </div>
+</article>
+
+</body>
+</html>
