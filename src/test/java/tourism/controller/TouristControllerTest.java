@@ -48,7 +48,6 @@ class TouristControllerTest {
         mockMvc.perform(get("/attractions"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"));
-
     }
 
     @Test

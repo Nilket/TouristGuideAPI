@@ -21,9 +21,10 @@ public class TouristController {
         this.touristService = touristService;
     }
 
+    // Get mappings
     @GetMapping("/attractions/{name}/tags")
-    public String tags(Model model, @PathVariable String name){
-        List<Tags>listOfTags = touristService.getTags(name);
+    public String tags(Model model, @PathVariable String name) {
+        List<Tags> listOfTags = touristService.getTags(name);
 
 
         return "tags";
@@ -34,35 +35,17 @@ public class TouristController {
         model.addAttribute("attractions", touristService.getAttractions());
         return "index";
     }
-    /*
-    @GetMapping("/suggestion")
-    public String suggestion(Model model){
-        model.addAttribute("attractions", touristService.getAttractions());
-        return "add";
-    } */
-
-
-
 
     @GetMapping("/attractionsList")
     public String attractionsList(Model model) {
         model.addAttribute("attractionsList", touristService.getAttractions());
-        model.addAttribute("touristAttraction",new TouristAttraction());
+        model.addAttribute("touristAttraction", new TouristAttraction());
         return "attractionList";
     }
 
-    /*
-    @GetMapping("/attractions/{name}/edit")
-    public String editWindow(String name, Model model){
-        model.addAttribute("editWindow", touristService.getAttractionsByName(name));
-
-        return "edit";
-    } */
-
-
 
     @GetMapping("attractions/{name}")
-    public String getAttractionByName(@PathVariable String name, Model model){
+    public String getAttractionByName(@PathVariable String name, Model model) {
         model.addAttribute("attractionsByName", touristService.getAttractionsByName(name));
         return "attraction";
     }
@@ -77,34 +60,31 @@ public class TouristController {
         model.addAttribute("tags", Tags.values());
         return "add";
     }
-    @PostMapping("/add")
-    public String save(@ModelAttribute TouristAttraction touristAttraction){
-        touristService.addAttractions(touristAttraction);
-        return "redirect:/save";
-    }
 
     @GetMapping("/save")
-    public String savedAttractions(Model model){
+    public String savedAttractions(Model model) {
         model.addAttribute("attractions", touristService.getAttractions());
         return "save";
     }
 
 
-    //Posts
+    //Post mappings
     @PostMapping("/update")
-    public ResponseEntity<TouristAttraction> updateTouristAttraction(@RequestBody TouristAttraction touristAttraction){
+    public ResponseEntity<TouristAttraction> updateTouristAttraction(@RequestBody TouristAttraction touristAttraction) {
         TouristAttraction newTouristAttraction = touristService.updateAttraction(touristAttraction);
         return new ResponseEntity<>(newTouristAttraction, HttpStatus.OK);
     }
 
     @PostMapping("/delete/{name}")
-    public ResponseEntity<TouristAttraction> deleteTouristAttraction(@PathVariable String name){
+    public ResponseEntity<TouristAttraction> deleteTouristAttraction(@PathVariable String name) {
         TouristAttraction newTouristAttraction = touristService.deleteAttraction(name);
         return new ResponseEntity<>(newTouristAttraction, HttpStatus.OK);
     }
 
-
-
-
+    @PostMapping("/add")
+    public String save(@ModelAttribute TouristAttraction touristAttraction) {
+        touristService.addAttractions(touristAttraction);
+        return "redirect:/save";
+    }
 
 }
