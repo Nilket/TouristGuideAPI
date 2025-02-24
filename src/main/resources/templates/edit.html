@@ -5,7 +5,7 @@
     <title>Edit an attraction</title>
 </head>
 <body>
-<form action="#" th:action="@{/attraction/edit/{id}}" th:object="${attraction}" method="post">
+<form action="#" th:action="@{/attraction/edit/{name}}" th:object="${attraction}" method="post">
     <fieldset align="center">
         <legend>Fil out the form:</legend>
 
@@ -36,7 +36,7 @@
 
 
     </fieldset>
-    <button th:href="@{save.html}" type="submit">Submit</button>
+    <button th:href="@{save}" type="submit">Submit</button>
 
 </form>
 

@@ -9,7 +9,7 @@ public class TouristAttraction {
     private List<Tags> tags;
     private Byer by;
     private String URLName;
-    private UUID id;
+
 
 
     public TouristAttraction(String name, String description, List<Tags> tags, Byer by) {
@@ -18,7 +18,6 @@ public class TouristAttraction {
         this.tags = tags;
         this.by = by;
         this.URLName = generateURLName();
-        this.id = UUID.randomUUID();
 
 
     }
@@ -40,13 +39,8 @@ public class TouristAttraction {
         return tags;
     }
 
-    public UUID getId() {
-        return id;
-    }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
+
 
     public Byer getBy() {
         return by;

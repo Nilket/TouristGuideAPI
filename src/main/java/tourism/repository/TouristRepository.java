@@ -8,18 +8,17 @@ import tourism.model.TouristAttraction;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Repository
 public class TouristRepository {
-    private List<TouristAttraction> attractions = new ArrayList<>();
+    private List<TouristAttraction> attractions;
 
 
     public TouristRepository(List<TouristAttraction> attractions) {
         this.attractions = attractions;
         addAttractions(new TouristAttraction("Tivoli", "Tivoli er den suverænt mest besøgte turistattraktion i Danmark med 2,3 mio. besøgende i 2021. Parken er Europas fjerdemest besøgte forlystelsespark",List.of(Tags.FORLYSTELSESPARK, Tags.UNDERHOLDNING, Tags.KONCERT, Tags.KULTUR, Tags.RESTAURANT), Byer.KØBENHAVN));
-        addAttractions(new TouristAttraction("DR Byen", "DR Byen er hovedkvarteret for Danmarks Radio (DR) og et imponerende mediehus i København. Bygningen består af fire segmenter, der huser DR's tv- og radioproduktion, nyheder og koncerthuset. DR Koncerthuset, designet af arkitekten Jean Nouvel, er en af Europas mest anerkendte koncertsale med fantastisk akustik og et futuristisk udseende.", List.of(Tags.GRATIS, Tags.KONCERT, Tags.UNDERHOLDNING), Byer.KØBENHAVN));
-        addAttractions(new TouristAttraction("Den Lille Havfrue", "Inspireret af H.C. Andersens eventyr, denne lille, men berømte bronzestatue sidder på en sten ved Langelinie. Selvom den ofte kaldes skuffende lille af turister, er den stadig et must-see og en af Københavns mest kendte vartegn.", List.of(Tags.KUNST, Tags.KULTUR, Tags.GRATIS), Byer.KØBENHAVN));
+        addAttractions(new TouristAttraction("DRByen", "DR Byen er hovedkvarteret for Danmarks Radio (DR) og et imponerende mediehus i København. Bygningen består af fire segmenter, der huser DR's tv- og radioproduktion, nyheder og koncerthuset. DR Koncerthuset, designet af arkitekten Jean Nouvel, er en af Europas mest anerkendte koncertsale med fantastisk akustik og et futuristisk udseende.", List.of(Tags.GRATIS, Tags.KONCERT, Tags.UNDERHOLDNING), Byer.KØBENHAVN));
+        addAttractions(new TouristAttraction("DenLilleHavfrue", "Inspireret af H.C. Andersens eventyr, denne lille, men berømte bronzestatue sidder på en sten ved Langelinie. Selvom den ofte kaldes skuffende lille af turister, er den stadig et must-see og en af Københavns mest kendte vartegn.", List.of(Tags.KUNST, Tags.KULTUR, Tags.GRATIS), Byer.KØBENHAVN));
         addAttractions(new TouristAttraction("Nyhavn", "Den ikoniske havnepromenade med farverige bygninger, hyggelige restauranter og gamle træskibe. Nyhavn var engang hjem for forfatteren H.C. Andersen og er i dag et af de mest fotograferede steder i København. Perfekt til en gåtur langs vandet eller en bådtur i kanalerne.", List.of(Tags.GRATIS, Tags.RESTAURANT, Tags.BØRNEVENLIG), Byer.KØBENHAVN));
 
     }
@@ -80,7 +79,7 @@ public class TouristRepository {
 
     public void updateAttraction(TouristAttraction nyAttraction){
         for(TouristAttraction i: attractions){
-            if(i.getId().equals(nyAttraction.getId())){
+            if(i.getName().equals(nyAttraction.getName())){
                 i.setName(nyAttraction.getName());
                 i.setBy(nyAttraction.getBy());
                 i.setDescription(nyAttraction.getDescription());
@@ -89,16 +88,20 @@ public class TouristRepository {
         }
     }
 
-    public TouristAttraction getOrderById(UUID id){
+    public TouristAttraction getAttractionByName(String name){
         for(TouristAttraction i: attractions){
-            if(i.getId().equals(id)){
+            if(i.getName().equalsIgnoreCase(name)){
                 return i;
             }
         } return null;
     }
 
-    public void removeAttraction(UUID id){
-        attractions.remove(id);
+    public void removeAttraction(String name){
+        for(TouristAttraction i: attractions){
+            if(i.getName().equalsIgnoreCase(name)){
+                attractions.remove(i);
+            }
+        }
     }
 
 

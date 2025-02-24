@@ -6,7 +6,6 @@ import tourism.model.TouristAttraction;
 import tourism.repository.TouristRepository;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class TouristService {
@@ -48,12 +47,12 @@ public class TouristService {
     }
 
 
-    public TouristAttraction getOrderById(UUID id){
-        return touristRepository.getOrderById(id);
+    public TouristAttraction getAttractionByName(String name){
+        return touristRepository.getAttractionByName(name);
     }
 
-    public void removeAttraction(UUID id){
-        touristRepository.removeAttraction(id);
+    public void removeAttraction(String name){
+        touristRepository.removeAttraction(name);
     }
 
 }
