@@ -12,6 +12,7 @@ import tourism.service.TouristService;
 
 
 @Controller
+@RequestMapping("")
 public class TouristController {
     private final TouristService touristService;
 

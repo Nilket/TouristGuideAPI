@@ -11,11 +11,11 @@
 
 
         <label for="name">Name of attraction:</label>
-        <textarea id="name" name="name" required></textarea>
+        <textarea id="name" name="name" readonly th:text="${attraction.name}"></textarea>
         <br>
 
         <label for="description">Description of attraction:</label>
-        <textarea id="description" name="description"></textarea>
+        <textarea id="description" name="description" th:text="${attraction.description}"></textarea>
 
 
         <p>
@@ -39,6 +39,7 @@
     <button th:href="@{save}" type="submit">Submit</button>
 
 </form>
+<a th:href="@{/attractions}">Gå til forsiden</a>
 
 
 
