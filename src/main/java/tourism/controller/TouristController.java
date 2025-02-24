@@ -36,12 +36,7 @@ public class TouristController {
 
 
 
-    @GetMapping("/attractionsList")
-    public String attractionsList(Model model) {
-        model.addAttribute("attractionsList", touristService.getAttractions());
-        model.addAttribute("touristAttraction",new TouristAttraction());
-        return "attractionList";
-    }
+
 
     /*
     @GetMapping("/attractions/{name}/edit")
@@ -102,7 +97,15 @@ public class TouristController {
     }
 
 
-    @GetMapping("/attraction/edit/{name}")
+
+    @GetMapping("/attractionsList")
+    public String attractionsList(Model model) {
+        model.addAttribute("attractionsList", touristService.getAttractions());
+        model.addAttribute("touristAttraction",new TouristAttraction());
+        return "attractionsList";
+    }
+
+    @GetMapping("/attractions/edit/{name}")
     public String editAttraction(@PathVariable String name, Model model){
         TouristAttraction touristAttraction = touristService.getAttractionByName(name);
         if(touristAttraction.getName() == null){
@@ -116,26 +119,37 @@ public class TouristController {
     }
 
 
-    @PostMapping("/attraction/edit/{name}")
+    @PostMapping("/attractions/edit/{name}")
     public String postEditAttraction(@ModelAttribute TouristAttraction touristAttraction){
         touristService.updateAttraction(touristAttraction);
         return "redirect:/save";
     }
 
 
-    @GetMapping("/attraction/tags/{name}")
+    @GetMapping("/attractions/tags/{name}")
     public String tags(Model model, @PathVariable String name){
         model.addAttribute("touristAttraction", touristService.getAttractionByName(name).getName());
         model.addAttribute("touristAttraction", touristService.getAttractionByName(name));
         return "tags";
     }
 
-
-    @PostMapping("/attraction/delete/{name}")
+    /*
+    @PostMapping("/attractions/delete/{name}")
     public String removeAttraction(@PathVariable String name){
         touristService.removeAttraction(name);
-        return "redirect:/save";
+        return "redirect:/attractionsList";
+    } */
+
+
+    @GetMapping("/attractions/delete/{name}")
+    public String plsVIRK(Model model, @PathVariable String name){
+        touristService.removeAttraction(name);
+        model.addAttribute("attractionsList", touristService.getAttractions());
+        return "redirect:/attractionsList";
     }
+
+
+
 
 
 

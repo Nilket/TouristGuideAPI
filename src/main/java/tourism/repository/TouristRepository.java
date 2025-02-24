@@ -96,12 +96,14 @@ public class TouristRepository {
         } return null;
     }
 
-    public void removeAttraction(String name){
+    public TouristAttraction removeAttraction(String name){
         for(TouristAttraction i: attractions){
             if(i.getName().equalsIgnoreCase(name)){
                 attractions.remove(i);
+                return i;
             }
         }
+        return null;
     }
 
 

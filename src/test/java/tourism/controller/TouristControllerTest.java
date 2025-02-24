@@ -63,4 +63,11 @@ class TouristControllerTest {
 
         verify(touristService, times(1)).getAttractions();
     }
+
+
+    @Test
+    void postEditAttraction() throws Exception {
+
+    }
+
 }

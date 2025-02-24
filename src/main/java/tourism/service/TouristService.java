@@ -51,8 +51,8 @@ public class TouristService {
         return touristRepository.getAttractionByName(name);
     }
 
-    public void removeAttraction(String name){
-        touristRepository.removeAttraction(name);
+    public TouristAttraction removeAttraction(String name){
+       return touristRepository.removeAttraction(name);
     }
 
 }
