@@ -16,15 +16,17 @@
     </div>
 </header>
 
-<nav>
+<div class="dropdown">
+    <button class="dropbtn">Sider</button>
+<div class="dropdown-content">
     <a th:href="@{/add}">User tourist attraction suggestions</a>
     <a th:href="@{/attractionsList}">Attractions list</a>
     <a href="http://localhost:8080/attractions/tivoli">Tivoli</a>
     <a href="http://localhost:8080/attractions/dr%20byen">DR Byen</a>
     <a href="http://localhost:8080/attractions/den%20lille%20havfrue">Den lille havfrue</a>
     <a href="http://localhost:8080/attractions/nyhavn">Nyhavn</a>
-</nav>
-
+</div>
+</div>
 <article>
     <div th:each=" items : ${attractions}" class="row">
         <p th:text="${items.name}" class="row"></p>
