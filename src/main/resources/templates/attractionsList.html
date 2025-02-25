@@ -7,8 +7,7 @@
 </head>
 <body>
 <h1 align="center">Turistattraktioner</h1>
-<form action="#" method="post" th:action="@{/attractionsList}" th:object="${touristAttraction}">
-    <input type="hidden" th:field="*{name}" />
+
 <table border="1">
     <thead>
     <tr>
@@ -21,15 +20,27 @@
     <tr th:each ="attraction : ${attractionsList} ">
       <td th:text ="${attraction.getName}" ></td>
       <td th:text="${attraction.getDescription}" ></td>
-        <td><a class="opdater" th:href="@{/attractions/edit/{name}(name=${attraction.getName()})}">Opdater</a> </td>
-        <td><a class="slet" th:href="@{/attractions/delete/{name}(name=${attraction.getName()})}">Slet</a> </td>
-        <td><a class="tags" th:href="@{/attractions/tags/{name}(name=${attraction.getName()})}">Tags</a> </td>
+
+
+        <td><form th:action="@{'/attractions/tags/' + ${attraction.getName()}}" th:method="get">
+            <button th:type="submit">tags</button>
+        </form></td>
+
+        <td><form th:action="@{'/attractions/edit/' + ${attraction.getName()}}" th:method="get">
+            <button th:type="submit">opdater</button>
+        </form></td>
+
+        <td><form th:action="@{'/attractions/delete/' + ${attraction.getName()}}" th:method="post">
+            <button th:type="submit">slet</button>
+        </form></td>
+
+
     </tr>
   </tbody>
 </table>
     <br>
 
-</form>
+
 <a th:href="@{/attractions}">Gå til forsiden</a>
 </body>
 </html>
