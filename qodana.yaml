@@ -14,20 +14,11 @@ profile:
 #  - name: <SomeDisabledInspectionId>
 #    paths:
 #      - <path/where/not/run/inspection>
-projectJDK: "17" #(Applied in CI/CD pipeline)
+projectJDK: 22 #(Applied in CI/CD pipeline)
 #Execute shell command before Qodana execution (Applied in CI/CD pipeline)
 #bootstrap: sh ./prepare-qodana.sh
 #Install IDE plugins before Qodana execution (Applied in CI/CD pipeline)
 #plugins:
 #  - id: <plugin.id> #(plugin id can be found at https://plugins.jetbrains.com)
 #Specify Qodana linter for analysis (Applied in CI/CD pipeline)
-linter: jetbrains/qodana-jvm:2024.3
-exclude:
-  - name: All
-    paths:
-      - src/main/java/tourism
-      - src
-      - src/main
-      - src/main/java
-      - src/main/java/tourism/model
-      - src/main/java/tourism/repository
+linter: jetbrains/qodana-jvm:latest

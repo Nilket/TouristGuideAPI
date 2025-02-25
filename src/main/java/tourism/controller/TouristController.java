@@ -1,7 +1,6 @@
 package tourism.controller;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,10 +9,9 @@ import tourism.model.Tags;
 import tourism.model.TouristAttraction;
 import tourism.service.TouristService;
 
-import java.util.List;
-
 
 @Controller
+@RequestMapping("")
 public class TouristController {
     private final TouristService touristService;
 
@@ -21,44 +19,11 @@ public class TouristController {
         this.touristService = touristService;
     }
 
-    @GetMapping("/attractions/{name}/tags")
-    public String tags(Model model, @PathVariable String name){
-        List<Tags>listOfTags = touristService.getTags(name);
-
-
-        return "tags";
-    }
-
     @GetMapping("/attractions")
     public String attractions(Model model) {
         model.addAttribute("attractions", touristService.getAttractions());
         return "index";
     }
-    /*
-    @GetMapping("/suggestion")
-    public String suggestion(Model model){
-        model.addAttribute("attractions", touristService.getAttractions());
-        return "add";
-    } */
-
-
-
-
-    @GetMapping("/attractionsList")
-    public String attractionsList(Model model) {
-        model.addAttribute("attractionsList", touristService.getAttractions());
-        model.addAttribute("touristAttraction",new TouristAttraction());
-        return "attractionList";
-    }
-
-    /*
-    @GetMapping("/attractions/{name}/edit")
-    public String editWindow(String name, Model model){
-        model.addAttribute("editWindow", touristService.getAttractionsByName(name));
-
-        return "edit";
-    } */
-
 
 
     @GetMapping("attractions/{name}")
@@ -89,18 +54,58 @@ public class TouristController {
         return "save";
     }
 
-    //Posts
-    @PostMapping("attractions/update")
-    public String updateTouristAttraction(@ModelAttribute TouristAttraction touristAttraction){
-        touristService.updateAttraction(touristAttraction);
-        return "redirect:/index";
+
+
+
+    @GetMapping("/attractionsList")
+    public String attractionsList(Model model) {
+        model.addAttribute("attractionsList", touristService.getAttractions());
+        model.addAttribute("touristAttraction",new TouristAttraction());
+        return "attractionsList";
     }
 
-    @PostMapping("attractions/delete/{name}")
-    public String deleteTouristAttraction(@PathVariable String name){
-        touristService.deleteAttraction(name);
-        return "redirect:index";
+    @GetMapping("/attractions/edit/{name}")
+    public String editAttraction(@PathVariable String name, Model model){
+        TouristAttraction touristAttraction = touristService.getAttractionByName(name);
+        if(touristAttraction.getName() == null){
+            throw new IllegalArgumentException("Id not found");
+        }
+        model.addAttribute("attraction", touristAttraction);
+        model.addAttribute("city", Byer.values());
+        model.addAttribute("tags", Tags.values());
+
+        return "edit";
     }
+
+
+    @PostMapping("/edit")
+    public String postEditAttraction(@ModelAttribute TouristAttraction touristAttraction){
+        touristService.updateAttraction(touristAttraction);
+        return "redirect:/attractionsList";
+    }
+
+
+
+    @GetMapping("/attractions/tags/{name}")
+    public String tags(Model model, @PathVariable String name){
+        model.addAttribute("touristAttraction", touristService.getTags(name));
+        return "tags";
+    }
+
+
+    @PostMapping("/attractions/delete/{name}")
+    public String removeAttraction(@PathVariable String name){
+        touristService.removeAttraction(name);
+        return "redirect:/attractionsList";
+    }
+
+
+
+
+
+
+
+
 
 
 
