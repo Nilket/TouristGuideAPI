@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/css/attractionStyle.css}" href="/css/main.css">
+    <link rel="stylesheet" th:href="@{/css/attractionStyle.css?v=0.01}" href="/css/main.css">
     <title>Tourist Attraction</title>
 </head>
 <body>
@@ -14,7 +14,11 @@
     <img th:if="${attraction.name == 'Nyhavn'}" th:src="@{/images/nyhavn.jpeg}" alt="Billede af Nyhavn" width="800px">
     <img th:if="${attraction.name == 'DenLilleHavfrue'}" th:src="@{/images/denlillehavfrue.jpg}" alt="Billede af Den Lille Havfrue" width="800px">
   <p th:text="${attraction.description}"></p>
+    <p th:text="${attraction.getBy}"></p>
+    <p th:text="${attraction.getTags}"></p>
+
 </div>
+<a th:href="@{/attractions}">Gå til forsiden</a>
 
 
 </body>
