@@ -22,7 +22,7 @@ table {
 }
 
 thead {
-    background-color: #0073e6;
+    background-color: cornflowerblue;
     color: white;
 }
 
@@ -38,7 +38,7 @@ td {
 
 /* Styling til knapper */
 button {
-    background-color: #0073e6;
+    background-color: cornflowerblue;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -56,7 +56,7 @@ a {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #0073e6;
+    background-color: cornflowerblue;
     color: white;
     text-decoration: none;
     border-radius: 5px;

@@ -8,7 +8,7 @@ body {
 }
 
 header {
-    background-color: #0073e6;
+    background-color: cornflowerblue;
     color: white;
     padding: 20px;
     font-size: 1.5em;
@@ -41,7 +41,7 @@ a {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #0073e6;
+    background-color: cornflowerblue;
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -49,5 +49,5 @@ a {
 }
 
 a:hover {
-    background-color: #005bb5;
+    background-color: cornflowerblue;
 }
