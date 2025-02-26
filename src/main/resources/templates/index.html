@@ -2,28 +2,31 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/css/main.css?v=0.01}" href="/css/main.css">
+    <link rel="stylesheet" th:href="@{/css/main.css?v=0.03}" href="/css/main.css">
     <title>Tourist Attractions</title>
 </head>
 <body>
 <header>
     <h1>Tourist Attractions in Copenhagen</h1>
-    <div class="headline-image">
-        <img class="img" src="/images/TouristGuideAPIBanner.png" alt="Tivoli, DR Byen, Den Lille Havfrue & Nyhavn">
-        <div class="headline-overlay">
-            <h2>Where Dreams Become Reality!</h2>
+    <div class="dropdown">
+        <button class="dropbtn">Menu</button>
+        <div class="dropdown-content">
+            <a th:href="@{/add}">Suggestion</a>
+            <a th:href="@{/attractionsList}">List of attractions</a>
+            <a href="http://localhost:8080/attractions/tivoli">Tivoli</a>
+            <a href="http://localhost:8080/attractions/drbyen">DR Byen</a>
+            <a href="http://localhost:8080/attractions/denlillehavfrue">Den Lille Havfrue</a>
+            <a href="http://localhost:8080/attractions/nyhavn">Nyhavn</a>
         </div>
     </div>
 </header>
 
-<nav>
-    <a th:href="@{/add}">User tourist attraction suggestions</a>
-    <a th:href="@{/attractionsList}">Attractions list</a>
-    <a href="http://localhost:8080/attractions/tivoli">Tivoli</a>
-    <a href="http://localhost:8080/attractions/drbyen">DRByen</a>
-    <a href="http://localhost:8080/attractions/denlillehavfrue">Denlillehavfrue</a>
-    <a href="http://localhost:8080/attractions/nyhavn">Nyhavn</a>
-</nav>
+<div class="headline-image">
+    <img class="img" src="/images/TouristGuideAPIBanner.png" alt="Tivoli, DR Byen, Den Lille Havfrue & Nyhavn">
+    <div class="headline-overlay">
+        <h2>Where Dreams Become Reality!</h2>
+    </div>
+</div>
 
 <article>
     <div th:each=" items : ${attractions}" class="row">
@@ -45,7 +48,7 @@
 <footer>
     <nav>
         <br><br/>
-        <Strong>Contact information: </Strong>
+        <Strong>Contact information:</Strong>
         <p>Hannibal Ussing-Widholm: Hannibal@ussing.com</p>
         <p>Jonas Nilket: Nilket@gmail.com</p>
         <p>Joakim Rosdal: Rosdal@gmail.com</p>
