@@ -2,23 +2,27 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" th:href="@{/css/main.css?v=0.05}" href="/css/main.css">
+    <link rel="stylesheet" th:href="@{/css/main.css?v=0.07}" href="/css/main.css">
     <title>Tourist Attractions</title>
 </head>
 <body>
 <header>
     <h1>Tourist Attractions in Copenhagen</h1>
-    <div class="dropdown">
-        <button class="dropbtn">Menu</button>
-        <div class="dropdown-content">
-            <a th:href="@{/add}">Suggestion</a>
-            <a th:href="@{/attractionsList}">List of attractions</a>
-            <a th:each="attraction : ${attractions}"
-               th:href="@{/attractions/{name}(name=${attraction.name})}"
-               th:text="${attraction.name}">
-            </a>
+    <div class="headerdiv">
+        <div class="dropdown">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+                <a th:href="@{/add}">Suggestion</a>
+                <a th:href="@{/attractionsList}">List of attractions</a>
+                <a th:each="attraction : ${attractions}"
+                   th:href="@{/attractions/{name}(name=${attraction.name})}"
+                   th:text="${attraction.name}">
+                </a>
+            </div>
         </div>
     </div>
+
+
 </header>
 
 <div class="headline-image">

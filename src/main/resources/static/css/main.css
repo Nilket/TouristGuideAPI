@@ -21,11 +21,20 @@ body{
 header{
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     background-color: cornflowerblue;
     padding: 10px;
-    gap: 900px;
+    padding-right: 80px;
+    padding-left: 80px;
+
 }
+
+.headerdiv{
+    display: flex;
+    justify-content: center;
+}
+
+
 
 h1{
     margin: 0;
