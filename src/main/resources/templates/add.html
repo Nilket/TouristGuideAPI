@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/addStyle.css?v=0.01}" href="/css/addStyle.css">
     <title>Tourist Attractions user suggestion</title>
 </head>
 <body>
@@ -19,7 +20,7 @@
             <br>
 
             <label for="description">Description of attraction:</label>
-            <textarea id="description" name="description"></textarea>
+            <textarea id="description" name="description" required></textarea>
 
 
         <p>
@@ -43,6 +44,8 @@
     <button th:href="@{save.html}" type="submit">Submit</button>
 
 </form>
+<a th:href="@{/attractions}">Gå til forsiden</a>
+
 
 </body>
 </html>

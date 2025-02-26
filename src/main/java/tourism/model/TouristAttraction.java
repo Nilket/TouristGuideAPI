@@ -1,6 +1,7 @@
 package tourism.model;
 
 import java.util.List;
+import java.util.UUID;
 
 public class TouristAttraction {
     private String name;
@@ -10,12 +11,14 @@ public class TouristAttraction {
     private String URLName;
 
 
+
     public TouristAttraction(String name, String description, List<Tags> tags, Byer by) {
         this.name = name;
         this.description = description;
         this.tags = tags;
         this.by = by;
         this.URLName = generateURLName();
+
 
     }
 
@@ -35,6 +38,9 @@ public class TouristAttraction {
     public List<Tags> getTags() {
         return tags;
     }
+
+
+
 
     public Byer getBy() {
         return by;
@@ -67,4 +73,7 @@ public class TouristAttraction {
     public void setTags(List<Tags> tags) {
         this.tags = tags;
     }
+
+
+
 }
