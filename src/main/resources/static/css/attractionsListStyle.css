@@ -1,4 +1,4 @@
-/* Generelle stilregler */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -12,7 +12,7 @@ h1 {
     margin-top: 20px;
 }
 
-/* Styling til tabellen */
+
 table {
     width: 80%;
     margin: 20px auto;
@@ -36,7 +36,7 @@ td {
     background-color: #f9f9f9;
 }
 
-/* Styling til knapper */
+
 button {
     background-color: cornflowerblue;
     color: white;
@@ -51,7 +51,7 @@ button:hover {
     background-color: #005bb5;
 }
 
-/* Styling til links */
+
 a {
     display: inline-block;
     margin-top: 20px;
@@ -67,7 +67,7 @@ a:hover {
     background-color: #005bb5;
 }
 
-/* Styling til footeren */
+
 footer {
     background-color: #333;
     color: white;
