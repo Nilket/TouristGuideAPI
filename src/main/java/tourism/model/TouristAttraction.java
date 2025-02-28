@@ -8,8 +8,6 @@ public class TouristAttraction {
     private String description;
     private List<Tags> tags;
     private Byer by;
-    private String URLName;
-
 
 
     public TouristAttraction(String name, String description, List<Tags> tags, Byer by) {
@@ -17,29 +15,14 @@ public class TouristAttraction {
         this.description = description;
         this.tags = tags;
         this.by = by;
-        this.URLName = generateURLName();
-
-
     }
 
     public TouristAttraction() {
     }
 
-    public String generateURLName() {
-        String URLName = "";
-        for (String s : this.name.split("")) {
-            if (!s.equalsIgnoreCase(" ")) {
-                URLName += s;
-            }
-        }
-        return URLName;
-    }
-
     public List<Tags> getTags() {
         return tags;
     }
-
-
 
 
     public Byer getBy() {
@@ -66,14 +49,7 @@ public class TouristAttraction {
         this.by = by;
     }
 
-    public void setURLName(String URLName) {
-        this.URLName = URLName;
-    }
-
     public void setTags(List<Tags> tags) {
         this.tags = tags;
     }
-
-
-
 }

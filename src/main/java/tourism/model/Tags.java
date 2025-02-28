@@ -12,16 +12,13 @@ public enum Tags {
     GRATIS("Gratis"),
     NATUR("Natur");
 
-
     private String displayName;
 
-
-     Tags(String displayName){
+    Tags(String displayName) {
         this.displayName = displayName;
     }
 
-    public String getDisplayName(){
-         return displayName;
+    public String getDisplayName() {
+        return displayName;
     }
-
 }

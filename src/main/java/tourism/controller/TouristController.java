@@ -25,13 +25,11 @@ public class TouristController {
         return "index";
     }
 
-
     @GetMapping("attractions/{name}")
-    public String getAttractionByName(@PathVariable String name, Model model){
+    public String getAttractionByName(@PathVariable String name, Model model) {
         model.addAttribute("attractionsByName", touristService.getAttractionsByName(name));
         return "attraction";
     }
-
 
     @GetMapping("/add")
     public String addTouristAttraction(Model model) {
@@ -42,73 +40,54 @@ public class TouristController {
         model.addAttribute("tags", Tags.values());
         return "add";
     }
+
     @PostMapping("/add")
-    public String save(@ModelAttribute TouristAttraction touristAttraction){
+    public String save(@ModelAttribute TouristAttraction touristAttraction) {
         touristService.addAttractions(touristAttraction);
         return "redirect:/save";
     }
 
     @GetMapping("/save")
-    public String savedAttractions(Model model){
+    public String savedAttractions(Model model) {
         model.addAttribute("attractions", touristService.getAttractions());
-        return "save";
+        return "saveAttractions";
     }
-
-
-
 
     @GetMapping("/attractionsList")
     public String attractionsList(Model model) {
         model.addAttribute("attractionsList", touristService.getAttractions());
-        model.addAttribute("touristAttraction",new TouristAttraction());
+        model.addAttribute("touristAttraction", new TouristAttraction());
         return "attractionsList";
     }
 
     @GetMapping("/attractions/edit/{name}")
-    public String editAttraction(@PathVariable String name, Model model){
+    public String editAttraction(@PathVariable String name, Model model) {
         TouristAttraction touristAttraction = touristService.getAttractionByName(name);
-        if(touristAttraction.getName() == null){
+        if (touristAttraction.getName() == null) {
             throw new IllegalArgumentException("Id not found");
         }
         model.addAttribute("attraction", touristAttraction);
         model.addAttribute("city", Byer.values());
         model.addAttribute("tags", Tags.values());
 
-        return "edit";
+        return "editAttraction";
     }
 
-
     @PostMapping("/edit")
-    public String postEditAttraction(@ModelAttribute TouristAttraction touristAttraction){
+    public String postEditAttraction(@ModelAttribute TouristAttraction touristAttraction) {
         touristService.updateAttraction(touristAttraction);
         return "redirect:/attractionsList";
     }
 
-
-
     @GetMapping("/attractions/tags/{name}")
-    public String tags(Model model, @PathVariable String name){
+    public String tags(Model model, @PathVariable String name) {
         model.addAttribute("touristAttraction", touristService.getTags(name));
         return "tags";
     }
 
-
     @PostMapping("/attractions/delete/{name}")
-    public String removeAttraction(@PathVariable String name){
+    public String removeAttraction(@PathVariable String name) {
         touristService.removeAttraction(name);
         return "redirect:/attractionsList";
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

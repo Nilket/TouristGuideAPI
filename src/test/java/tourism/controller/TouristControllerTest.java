@@ -29,19 +29,15 @@ class TouristControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-
     @MockitoBean
     private TouristService touristService;
-
 
     @BeforeEach
     void setup() {
         TouristAttraction attraction1 = new TouristAttraction("Tivoli", "Forlystelsespark", Arrays.asList(Tags.KULTUR, Tags.FORLYSTELSESPARK, Tags.UNDERHOLDNING), Byer.KØBENHAVN);
         TouristAttraction attraction2 = new TouristAttraction("DR Byen", "Blå bygning, idk", Arrays.asList(Tags.KONCERT, Tags.KULTUR), Byer.KØBENHAVN);
-
         mockList = List.of(attraction1, attraction2);
     }
-
 
     @Test
     void attractions() throws Exception {
@@ -53,20 +49,15 @@ class TouristControllerTest {
     @Test
     void testAttractionList() throws Exception {
         when(touristService.getAttractions()).thenReturn(mockList);
-
         mockMvc.perform(get("/attractionsList"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("attractionList"))
                 .andExpect(model().attributeExists("attractionsList"))
                 .andExpect(model().attribute("attractionsList", mockList));
-
         verify(touristService, times(1)).getAttractions();
     }
 
-
     @Test
     void postEditAttraction() throws Exception {
-
     }
-
 }
